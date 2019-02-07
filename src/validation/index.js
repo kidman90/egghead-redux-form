@@ -1,21 +1,12 @@
-export const validate = values => {
-  const errors = {};
+export const required = value =>
+  value ? undefined : 'Value is required';
 
-  if (!values.firstname) {
-    errors.firstname = 'First name is required';
-  }
+export const minLength = value =>
+  value.length < 4
+    ? 'Value must be at least 4 characters'
+    : undefined;
 
-  if (!values.surname) {
-    errors.surname = 'Surname name is required';
-  }
-
-  if (!values.username) {
-    errors.username = 'Username name is required';
-  } else if (values.username.length < 4) {
-    errors.username = 'Username must be at least 4 characters long';
-  } else if (values.username > 10) {
-    errors.username = 'Username is too long'
-  }
-
-  return errors;
-};
+export const maxLength = value =>
+  value.length > 10
+    ? 'Value is too long'
+    : undefined;
